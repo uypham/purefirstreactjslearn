@@ -17,18 +17,18 @@ module.exports = {
                 query: {
                     presets: ["env", "react"]
                 }
+            },
+            {
+                test: /\.(css|scss|sass)$/,
+                use: ["style-loader", "css-loader", "sass-loader"]
+            },
+            {
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: "url-loader",
+                options: {
+                    limit: 10000
+                }
             }
-            // {
-            //     test: /\.(css|scss|sass)$/,
-            //     use: ["style-loader", "css-loader", "sass-loader"]
-            // },
-            // {
-            //     test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-            //     loader: "url-loader",
-            //     options: {
-            //         limit: 10000
-            //     }
-            // }
         ]
     },
     devServer: {
@@ -55,7 +55,7 @@ module.exports = {
             coms: path.resolve(__dirname, "src/components/"),
         }
         ,
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.scss']
     },
     plugins: [
         new webpack.DefinePlugin({

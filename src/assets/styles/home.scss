@@ -1,0 +1,4 @@
+@import "./_mixin.scss";
+.form-lop {
+    @include max-width-center(500px);
+}
