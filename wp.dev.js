@@ -1,5 +1,5 @@
-var path = require("path");
-var webpack = require("webpack");
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
     entry: ["./src/index"],
@@ -42,7 +42,7 @@ module.exports = {
         open: true
     },
     externals: {
-        //jquery: "jQuery"
+        // jquery: "jQuery"
     },
     // resolve: {
     //     alias: {
@@ -52,10 +52,9 @@ module.exports = {
     // },
     resolve: {
         alias: {
-            coms: path.resolve(__dirname, "src/components/"),
-        }
-        ,
-        extensions: ['.js', '.jsx', '.scss']
+            coms: path.resolve(__dirname, "src/components/")
+        },
+        extensions: [".js", ".jsx", ".scss"]
     },
     plugins: [
         new webpack.DefinePlugin({

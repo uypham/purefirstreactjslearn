@@ -1,5 +1,5 @@
-var path = require("path");
-var webpack = require("webpack");
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
     entry: ["./src/index"],
@@ -14,27 +14,27 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 loader: "babel-loader",
                 exclude: /node_modules/,
-                query: { presets: ["env", "react"] }
+                query: {presets: ["env", "react"]}
+            },
+            {
+                test: /\.(css|scss|sass)$/,
+                use: ["style-loader", "css-loader", "sass-loader"]
+            },
+            {
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: "url-loader",
+                options: {
+                    limit: 10000
+                }
             }
-            // {
-            //     test: /\.(css|scss|sass)$/,
-            //     use: ["style-loader", "css-loader", "sass-loader"]
-            // },
-            // {
-            //     test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-            //     loader: "url-loader",
-            //     options: {
-            //         limit: 10000
-            //     }
-            // }
         ]
     },
     externals: {
-        //jquery: "jQuery"
+        // jquery: "jQuery"
     },
     resolve: {
         alias: {
-            coms: path.resolve(__dirname, "src/components/"),
+            coms: path.resolve(__dirname, "src/components/")
         }
     },
     plugins: [
@@ -48,6 +48,6 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]),
         new webpack.NoEmitOnErrorsPlugin()
-        //new webpack.optimize.AggressiveMergingPlugin() //Merge chunks
+        // new webpack.optimize.AggressiveMergingPlugin() //Merge chunks
     ]
 };
