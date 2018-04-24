@@ -4,6 +4,10 @@ import {render} from "react-dom";
 // CSS
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+// JQUERY
+import "../node_modules/jquery/src/jquery";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
+
 import Homepage from "./homepage";
 
 
@@ -16,4 +20,4 @@ class Welcome extends Component {
 
 export default Welcome;
 
-render(<Homepage />, document.getElementById("root"));
+render(<Homepage />, document.getElementById("app"));

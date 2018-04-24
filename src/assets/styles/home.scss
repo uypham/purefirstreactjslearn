@@ -1,4 +1,18 @@
 @import "./_mixin.scss";
+@import "./_coms.scss";
 .form-lop {
     @include max-width-center(500px);
+}
+
+.img-wrap {
+    @include max-width-center(500px);
+    .img-drop {
+        background-image: url("../img/pexels-photo-1023756.jpeg");
+    }
+}
+
+.chacon {
+    &.red {
+        color: red;
+    }
 }

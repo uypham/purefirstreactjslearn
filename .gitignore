@@ -8,7 +8,7 @@
 
 # production
 /build/*
-!build/images/
+!build/upload/
 !build/index.html
 
 # misc

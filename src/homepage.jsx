@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import ButtonGreen from "coms/button-blue";
+import ButtonGreen from "Coms/button-blue";
 import "./assets/styles/home";
+import UlCha from "./ulcha";
 
 const data = [
     {name: "Nguyễn Văn A", grade: 6},
@@ -21,6 +22,11 @@ class Homepage extends Component {
     componentWillMount() {
         document.title = "Homepage";
     }
+    componentDidMount() {
+        console.log(`jQuery version: ${$.fn.jquery}`);
+        // $("#mymodal").modal("show");
+    }
+
     liClick(hs) {
         alert(`${hs.name} - Lớp: ${hs.grade}`);
     }
@@ -55,13 +61,14 @@ class Homepage extends Component {
             };
         });
     }
+
     render() {
         const datalophoc = this.state.lophoc.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase());
         return (
             <div className="container">
                 <p>Homepage is here :)</p>
                 <p onClick={() => this.addHocSinh()}><ButtonGreen >CLICK ME</ButtonGreen></p>
-                <h4>Danh sách lớp học</h4>
+                <h4 id="title-lophoc">Danh sách lớp học</h4>
                 <ul>
                     {datalophoc.map((hocsinh, i) => (
                         <li onClick={() => this.liClick(hocsinh)} key={i}>
@@ -70,6 +77,18 @@ class Homepage extends Component {
                         </li>
                     ))}
                 </ul>
+
+                <UlCha />
+
+                <div className="img-wrap">
+                    <div className="img-drop ratio-169"></div>
+                </div>
+
+                <div className="img-wrap">
+                    <div className="img-drop ratio-169">
+                        <img src="/upload/imgupload.jpeg" alt="" />
+                    </div>
+                </div>
 
                 <h1>FORM</h1>
                 <form className="form-lop" ref="form-lop" onSubmit={e => this.onSubmitForm(e)} >
@@ -83,9 +102,20 @@ class Homepage extends Component {
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">SAVE</button>
+                        <button type="button" className="btn btn-info" data-toggle="modal" data-target="#mymodal">Show Modal</button>
                     </div>
                     <p ref="txtTen">{this.state.textTen}</p>
                 </form>
+
+                <div id="mymodal" className="modal fade">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <button type="button" className="close" data-dismiss="modal">&times;</button>
+                            <h4 className="modal-title">Modal Header</h4>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         );
     }
